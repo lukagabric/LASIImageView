@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4103925217D45DE0006F6AB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4103925117D45DE0006F6AB7 /* UIKit.framework */; };
+		4103925417D45DE0006F6AB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4103925317D45DE0006F6AB7 /* Foundation.framework */; };
+		4103925617D45DE0006F6AB7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4103925517D45DE0006F6AB7 /* CoreGraphics.framework */; };
+		4103928317D45E1D006F6AB7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4103927F17D45E1D006F6AB7 /* main.m */; };
+		4103928B17D45E80006F6AB7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4103928617D45E80006F6AB7 /* AppDelegate.m */; };
+		4103928C17D45E80006F6AB7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4103928A17D45E80006F6AB7 /* ViewController.m */; };
+		410392A617D45F59006F6AB7 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4103929017D45F59006F6AB7 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		410392A717D45F59006F6AB7 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4103929317D45F59006F6AB7 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		410392A817D45F59006F6AB7 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4103929517D45F59006F6AB7 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		410392A917D45F59006F6AB7 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4103929717D45F59006F6AB7 /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		410392AA17D45F59006F6AB7 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4103929917D45F59006F6AB7 /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		410392AB17D45F59006F6AB7 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4103929B17D45F59006F6AB7 /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		410392AC17D45F59006F6AB7 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4103929F17D45F59006F6AB7 /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		410392AD17D45F59006F6AB7 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 410392A117D45F59006F6AB7 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		410392AE17D45F59006F6AB7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 410392A517D45F59006F6AB7 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		410392B017D45FC7006F6AB7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410392AF17D45FC7006F6AB7 /* CFNetwork.framework */; };
+		410392B217D45FCB006F6AB7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410392B117D45FCB006F6AB7 /* SystemConfiguration.framework */; };
+		410392B417D45FD2006F6AB7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410392B317D45FD2006F6AB7 /* MobileCoreServices.framework */; };
+		410392B617D45FE4006F6AB7 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 410392B517D45FE4006F6AB7 /* libz.1.2.5.dylib */; };
+		410392B917D4600E006F6AB7 /* LASIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 410392B817D4600E006F6AB7 /* LASIImageView.m */; };
+		4126B04017D47540004FD6EF /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4126B03F17D47540004FD6EF /* ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4103924E17D45DE0006F6AB7 /* LASIImageView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LASIImageView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4103925117D45DE0006F6AB7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4103925317D45DE0006F6AB7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4103925517D45DE0006F6AB7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4103927D17D45E1D006F6AB7 /* LASIImageView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "LASIImageView-Info.plist"; sourceTree = "<group>"; };
+		4103927E17D45E1D006F6AB7 /* LASIImageView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LASIImageView-Prefix.pch"; sourceTree = "<group>"; };
+		4103927F17D45E1D006F6AB7 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4103928517D45E80006F6AB7 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4103928617D45E80006F6AB7 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4103928917D45E80006F6AB7 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4103928A17D45E80006F6AB7 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4103928F17D45F59006F6AB7 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		4103929017D45F59006F6AB7 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		4103929117D45F59006F6AB7 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		4103929217D45F59006F6AB7 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		4103929317D45F59006F6AB7 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		4103929417D45F59006F6AB7 /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		4103929517D45F59006F6AB7 /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		4103929617D45F59006F6AB7 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		4103929717D45F59006F6AB7 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		4103929817D45F59006F6AB7 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		4103929917D45F59006F6AB7 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		4103929A17D45F59006F6AB7 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		4103929B17D45F59006F6AB7 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		4103929C17D45F59006F6AB7 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		4103929D17D45F59006F6AB7 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		4103929E17D45F59006F6AB7 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		4103929F17D45F59006F6AB7 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		410392A017D45F59006F6AB7 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		410392A117D45F59006F6AB7 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		410392A217D45F59006F6AB7 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		410392A417D45F59006F6AB7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		410392A517D45F59006F6AB7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		410392AF17D45FC7006F6AB7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		410392B117D45FCB006F6AB7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		410392B317D45FD2006F6AB7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		410392B517D45FE4006F6AB7 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		410392B717D4600E006F6AB7 /* LASIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LASIImageView.h; sourceTree = "<group>"; };
+		410392B817D4600E006F6AB7 /* LASIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LASIImageView.m; sourceTree = "<group>"; };
+		4126B03F17D47540004FD6EF /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4103924B17D45DE0006F6AB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				410392B617D45FE4006F6AB7 /* libz.1.2.5.dylib in Frameworks */,
+				4103925617D45DE0006F6AB7 /* CoreGraphics.framework in Frameworks */,
+				410392B417D45FD2006F6AB7 /* MobileCoreServices.framework in Frameworks */,
+				410392B217D45FCB006F6AB7 /* SystemConfiguration.framework in Frameworks */,
+				410392B017D45FC7006F6AB7 /* CFNetwork.framework in Frameworks */,
+				4103925217D45DE0006F6AB7 /* UIKit.framework in Frameworks */,
+				4103925417D45DE0006F6AB7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4103924517D45DE0006F6AB7 = {
+			isa = PBXGroup;
+			children = (
+				4103925717D45DE0006F6AB7 /* LASIImageView */,
+				4103925017D45DE0006F6AB7 /* Frameworks */,
+				4103924F17D45DE0006F6AB7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4103924F17D45DE0006F6AB7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4103924E17D45DE0006F6AB7 /* LASIImageView.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4103925017D45DE0006F6AB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				410392B517D45FE4006F6AB7 /* libz.1.2.5.dylib */,
+				410392B317D45FD2006F6AB7 /* MobileCoreServices.framework */,
+				410392B117D45FCB006F6AB7 /* SystemConfiguration.framework */,
+				410392AF17D45FC7006F6AB7 /* CFNetwork.framework */,
+				4103925117D45DE0006F6AB7 /* UIKit.framework */,
+				4103925317D45DE0006F6AB7 /* Foundation.framework */,
+				4103925517D45DE0006F6AB7 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4103925717D45DE0006F6AB7 /* LASIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				4103927717D45E1D006F6AB7 /* Classes */,
+				4103928D17D45F59006F6AB7 /* External */,
+				4103927C17D45E1D006F6AB7 /* Supporting Files */,
+			);
+			path = LASIImageView;
+			sourceTree = "<group>";
+		};
+		4103927717D45E1D006F6AB7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4103928717D45E80006F6AB7 /* LASIImageView */,
+				4103928417D45E80006F6AB7 /* AppDelegate */,
+				4103928817D45E80006F6AB7 /* ViewControler */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		4103927C17D45E1D006F6AB7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4103927D17D45E1D006F6AB7 /* LASIImageView-Info.plist */,
+				4103927E17D45E1D006F6AB7 /* LASIImageView-Prefix.pch */,
+				4103927F17D45E1D006F6AB7 /* main.m */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4103928417D45E80006F6AB7 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				4103928517D45E80006F6AB7 /* AppDelegate.h */,
+				4103928617D45E80006F6AB7 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		4103928717D45E80006F6AB7 /* LASIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				410392B717D4600E006F6AB7 /* LASIImageView.h */,
+				410392B817D4600E006F6AB7 /* LASIImageView.m */,
+			);
+			path = LASIImageView;
+			sourceTree = "<group>";
+		};
+		4103928817D45E80006F6AB7 /* ViewControler */ = {
+			isa = PBXGroup;
+			children = (
+				4103928917D45E80006F6AB7 /* ViewController.h */,
+				4103928A17D45E80006F6AB7 /* ViewController.m */,
+				4126B03F17D47540004FD6EF /* ViewController.xib */,
+			);
+			path = ViewControler;
+			sourceTree = "<group>";
+		};
+		4103928D17D45F59006F6AB7 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				4103928E17D45F59006F6AB7 /* ASIHTTPRequest */,
+				410392A317D45F59006F6AB7 /* Reachability */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		4103928E17D45F59006F6AB7 /* ASIHTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				4103928F17D45F59006F6AB7 /* ASIAuthenticationDialog.h */,
+				4103929017D45F59006F6AB7 /* ASIAuthenticationDialog.m */,
+				4103929117D45F59006F6AB7 /* ASICacheDelegate.h */,
+				4103929217D45F59006F6AB7 /* ASIDataCompressor.h */,
+				4103929317D45F59006F6AB7 /* ASIDataCompressor.m */,
+				4103929417D45F59006F6AB7 /* ASIDataDecompressor.h */,
+				4103929517D45F59006F6AB7 /* ASIDataDecompressor.m */,
+				4103929617D45F59006F6AB7 /* ASIDownloadCache.h */,
+				4103929717D45F59006F6AB7 /* ASIDownloadCache.m */,
+				4103929817D45F59006F6AB7 /* ASIFormDataRequest.h */,
+				4103929917D45F59006F6AB7 /* ASIFormDataRequest.m */,
+				4103929A17D45F59006F6AB7 /* ASIHTTPRequest.h */,
+				4103929B17D45F59006F6AB7 /* ASIHTTPRequest.m */,
+				4103929C17D45F59006F6AB7 /* ASIHTTPRequestConfig.h */,
+				4103929D17D45F59006F6AB7 /* ASIHTTPRequestDelegate.h */,
+				4103929E17D45F59006F6AB7 /* ASIInputStream.h */,
+				4103929F17D45F59006F6AB7 /* ASIInputStream.m */,
+				410392A017D45F59006F6AB7 /* ASINetworkQueue.h */,
+				410392A117D45F59006F6AB7 /* ASINetworkQueue.m */,
+				410392A217D45F59006F6AB7 /* ASIProgressDelegate.h */,
+			);
+			path = ASIHTTPRequest;
+			sourceTree = "<group>";
+		};
+		410392A317D45F59006F6AB7 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				410392A417D45F59006F6AB7 /* Reachability.h */,
+				410392A517D45F59006F6AB7 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4103924D17D45DE0006F6AB7 /* LASIImageView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4103927417D45DE0006F6AB7 /* Build configuration list for PBXNativeTarget "LASIImageView" */;
+			buildPhases = (
+				4103924A17D45DE0006F6AB7 /* Sources */,
+				4103924B17D45DE0006F6AB7 /* Frameworks */,
+				4103924C17D45DE0006F6AB7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LASIImageView;
+			productName = LASIImageView;
+			productReference = 4103924E17D45DE0006F6AB7 /* LASIImageView.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4103924617D45DE0006F6AB7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Luka Gabric";
+			};
+			buildConfigurationList = 4103924917D45DE0006F6AB7 /* Build configuration list for PBXProject "LASIImageView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4103924517D45DE0006F6AB7;
+			productRefGroup = 4103924F17D45DE0006F6AB7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4103924D17D45DE0006F6AB7 /* LASIImageView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4103924C17D45DE0006F6AB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4126B04017D47540004FD6EF /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4103924A17D45DE0006F6AB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4103928317D45E1D006F6AB7 /* main.m in Sources */,
+				4103928B17D45E80006F6AB7 /* AppDelegate.m in Sources */,
+				4103928C17D45E80006F6AB7 /* ViewController.m in Sources */,
+				410392A617D45F59006F6AB7 /* ASIAuthenticationDialog.m in Sources */,
+				410392A717D45F59006F6AB7 /* ASIDataCompressor.m in Sources */,
+				410392A817D45F59006F6AB7 /* ASIDataDecompressor.m in Sources */,
+				410392A917D45F59006F6AB7 /* ASIDownloadCache.m in Sources */,
+				410392AA17D45F59006F6AB7 /* ASIFormDataRequest.m in Sources */,
+				410392AB17D45F59006F6AB7 /* ASIHTTPRequest.m in Sources */,
+				410392AC17D45F59006F6AB7 /* ASIInputStream.m in Sources */,
+				410392AD17D45F59006F6AB7 /* ASINetworkQueue.m in Sources */,
+				410392AE17D45F59006F6AB7 /* Reachability.m in Sources */,
+				410392B917D4600E006F6AB7 /* LASIImageView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		4103927217D45DE0006F6AB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4103927317D45DE0006F6AB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4103927517D45DE0006F6AB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LASIImageView/Supporting Files/LASIImageView-Prefix.pch";
+				INFOPLIST_FILE = "LASIImageView/Supporting Files/LASIImageView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4103927617D45DE0006F6AB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LASIImageView/Supporting Files/LASIImageView-Prefix.pch";
+				INFOPLIST_FILE = "LASIImageView/Supporting Files/LASIImageView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4103924917D45DE0006F6AB7 /* Build configuration list for PBXProject "LASIImageView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4103927217D45DE0006F6AB7 /* Debug */,
+				4103927317D45DE0006F6AB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4103927417D45DE0006F6AB7 /* Build configuration list for PBXNativeTarget "LASIImageView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4103927517D45DE0006F6AB7 /* Debug */,
+				4103927617D45DE0006F6AB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4103924617D45DE0006F6AB7 /* Project object */;
+}
