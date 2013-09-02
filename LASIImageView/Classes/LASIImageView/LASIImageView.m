@@ -96,8 +96,8 @@
     
     LRoundProgressView *progressView = [[LRoundProgressView alloc] initWithFrame:CGRectMake(0, 0, 37, 37)];
     
-    if (_progressViewAppearance)
-        progressView.appearance = _progressViewAppearance;
+    if (_progressAppearance)
+        progressView.progressAppearance = _progressAppearance;
     
     _progressView = progressView;
     
@@ -225,12 +225,12 @@
 }
 
 
-- (void)setProgressViewAppearance:(LProgressAppearance *)progressViewAppearance
+- (void)setProgressAppearance:(LProgressAppearance *)progressAppearance
 {
-    _progressViewAppearance = progressViewAppearance;
+    _progressAppearance = progressAppearance;
     
     if (_progressView)
-        _progressView.appearance = _progressViewAppearance;
+        _progressView.progressAppearance = _progressAppearance;
 }
 
 
@@ -263,7 +263,7 @@
 		self.backgroundColor = [UIColor clearColor];
 		self.opaque = NO;
 		_progress = 0.f;
-        _appearance = [LProgressAppearance new];
+        _progressAppearance = [LProgressAppearance new];
 		[self registerForKVO];
 	}
 	return self;
@@ -285,7 +285,7 @@
 	CGRect circleRect = CGRectInset(allRect, 2.0f, 2.0f);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	if (_appearance.annular)
+	if (_progressAppearance.annular)
     {
 		// Draw background
 		CGFloat lineWidth = 5.f;
@@ -297,7 +297,7 @@
 		CGFloat startAngle = - ((float)M_PI / 2); // 90 degrees
 		CGFloat endAngle = (2 * (float)M_PI) + startAngle;
 		[processBackgroundPath addArcWithCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
-		[_appearance.backgroundTintColor set];
+		[_progressAppearance.backgroundTintColor set];
 		[processBackgroundPath stroke];
 		// Draw progress
 		UIBezierPath *processPath = [UIBezierPath bezierPath];
@@ -305,18 +305,18 @@
 		processPath.lineWidth = lineWidth;
 		endAngle = (self.progress * 2 * (float)M_PI) + startAngle;
 		[processPath addArcWithCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
-		[_appearance.progressTintColor set];
+		[_progressAppearance.progressTintColor set];
 		[processPath stroke];
         
-        if (_appearance.showPercentageInAnnular)
+        if (_progressAppearance.showPercentageInAnnular)
         {
             CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
             
-            UIFont *font = _appearance.percentageTextFont;
+            UIFont *font = _progressAppearance.percentageTextFont;
             NSString *text = [NSString stringWithFormat:@"%i%%", (int)(_progress * 100.0f)];
             
-            float x = floorf(allRect.size.width / 2) + 3 + _appearance.percentageTextOffset.x;
-            float y = floorf(allRect.size.height / 2) - 6 + _appearance.percentageTextOffset.y;
+            float x = floorf(allRect.size.width / 2) + 3 + _progressAppearance.percentageTextOffset.x;
+            float y = floorf(allRect.size.height / 2) - 6 + _progressAppearance.percentageTextOffset.y;
             
             CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(30000, 13)];
             [text drawAtPoint:CGPointMake(x - textSize.width / 2.0, y) withFont:font];
@@ -325,8 +325,8 @@
     else
     {
 		// Draw background
-		[_appearance.progressTintColor setStroke];
-		[_appearance.backgroundTintColor setFill];
+		[_progressAppearance.progressTintColor setStroke];
+		[_progressAppearance.backgroundTintColor setFill];
 		CGContextSetLineWidth(context, 2.0f);
 		CGContextFillEllipseInRect(context, circleRect);
 		CGContextStrokeEllipseInRect(context, circleRect);
@@ -367,7 +367,7 @@
 
 - (NSArray *)observableKeypaths
 {
-	return [NSArray arrayWithObjects:@"appearance", @"progress", nil];
+	return [NSArray arrayWithObjects:@"progressAppearance", @"progress", nil];
 }
 
 

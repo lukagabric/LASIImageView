@@ -19,7 +19,7 @@
 @property (strong, nonatomic) UIImage *downloadFailedImage;
 @property (strong, nonatomic) NSString *downloadFailedImageName;
 
-@property (strong, nonatomic) LProgressAppearance *progressViewAppearance;
+@property (strong, nonatomic) LProgressAppearance *progressAppearance;
 
 @property (assign, nonatomic) ASICachePolicy cachePolicy;
 @property (assign, nonatomic) ASICacheStoragePolicy cacheStoragePolicy;
@@ -35,7 +35,7 @@
 
 
 @property (assign, nonatomic) float progress;
-@property (strong, nonatomic) LProgressAppearance *appearance;
+@property (strong, nonatomic) LProgressAppearance *progressAppearance;
 
 
 @end
