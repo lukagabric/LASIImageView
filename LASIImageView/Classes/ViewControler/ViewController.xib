@@ -37,15 +37,16 @@
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIImageView" id="578008344">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{53, 113}, {200, 200}}</string>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrameSize">{320, 213}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4yMzkyMTU2ODYzIDAuNDkwMTk2MDc4NCAwLjgxOTYwNzg0MzEAA</bytes>
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MCAwAA</bytes>
 						</object>
+						<int key="IBUIContentMode">2</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
@@ -55,8 +56,8 @@
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="578008344"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MC4wOTU3NzQ0MDY5MyAwLjcwOTgwMzkyMTYgMC4wMTk2MDc4NDMxNAA</bytes>
+					<int key="NSColorSpace">3</int>
+					<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
 				</object>
 				<object class="IBUIScreenMetrics" key="IBUISimulatedDestinationMetrics">
 					<string key="IBUISimulatedSizeMetricsClass">IBUIScreenMetrics</string>
