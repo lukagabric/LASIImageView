@@ -1,4 +1,5 @@
 #import "LASIImageView.h"
+#import <objc/runtime.h>
 
 
 @implementation LASIImageView
@@ -431,10 +432,8 @@
     self = [super init];
     if (self)
     {
-        _progressTintColor = [UIColor colorWithWhite:1 alpha:1];
-        _backgroundTintColor = [UIColor colorWithWhite:1 alpha:0.1];
+        self.schemeColor = [UIColor whiteColor];
         _percentageTextFont = [UIFont systemFontOfSize:10];
-        _percentageTextColor = [UIColor whiteColor];
         _percentageTextOffset = CGPointZero;
         _type = 0;
         _showPercentage = YES;
@@ -443,11 +442,13 @@
 }
 
 
-- (void)setColorSchemeWithColor:(UIColor *)color
+- (void)setSchemeColor:(UIColor *)schemeColor
 {
-    _progressTintColor = [UIColor colorWithCGColor:CGColorCreateCopyWithAlpha(color.CGColor, 1)];
-    _backgroundTintColor = [UIColor colorWithCGColor:CGColorCreateCopyWithAlpha(color.CGColor, 0.1)];
-    _percentageTextColor = [UIColor colorWithCGColor:CGColorCreateCopyWithAlpha(color.CGColor, 1)];
+    _schemeColor = schemeColor;
+    
+    _progressTintColor = [UIColor colorWithCGColor:CGColorCreateCopyWithAlpha(schemeColor.CGColor, 1)];
+    _backgroundTintColor = [UIColor colorWithCGColor:CGColorCreateCopyWithAlpha(schemeColor.CGColor, 0.1)];
+    _percentageTextColor = [UIColor colorWithCGColor:CGColorCreateCopyWithAlpha(schemeColor.CGColor, 1)];
 }
 
 

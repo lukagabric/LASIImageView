@@ -44,16 +44,16 @@
 @interface LProgressAppearance : NSObject
 
 
+//setting schemeColor will set progressTintColor, backgroundTintColor and percentageTextColor
+@property (strong, nonatomic) UIColor *schemeColor;
 @property (strong, nonatomic) UIColor *progressTintColor;
 @property (strong, nonatomic) UIColor *backgroundTintColor;
-@property (strong, nonatomic) UIFont *percentageTextFont;
 @property (strong, nonatomic) UIColor *percentageTextColor;
+
+@property (strong, nonatomic) UIFont *percentageTextFont;
 @property (assign, nonatomic) CGPoint percentageTextOffset;
 @property (assign, nonatomic) int type;
 @property (assign, nonatomic) BOOL showPercentage;
-
-
-- (void)setColorSchemeWithColor:(UIColor *)color;
 
 
 @end
