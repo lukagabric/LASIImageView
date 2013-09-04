@@ -3,13 +3,13 @@
 #import "ASICacheDelegate.h"
 
 
-@class LRoundProgressView, LProgressAppearance;
+@class LProgressView, LProgressAppearance;
 
 
 @interface LASIImageView : UIImageView <ASIHTTPRequestDelegate, ASIProgressDelegate>
 {
     ASIHTTPRequest *_request;
-    __weak LRoundProgressView *_progressView;
+    __weak LProgressView *_progressView;
 }
 
 
@@ -31,7 +31,14 @@
 @end
 
 
-@interface LRoundProgressView : UIView
+@interface LProgressView : UIView
+{
+    LProgressAppearance *_progressAppearance;
+}
+
+
++ (LProgressAppearance *)progressAppearance;
++ (void)setProgressAppearance:(LProgressAppearance *)progressAppearance;
 
 
 @property (assign, nonatomic) float progress;

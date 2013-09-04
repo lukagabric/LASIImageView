@@ -4,7 +4,6 @@
 @interface ViewController : UIViewController
 {
     __weak IBOutlet LASIImageView *_imageView;
-    
 }
 
 
