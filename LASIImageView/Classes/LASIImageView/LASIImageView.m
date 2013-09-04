@@ -312,8 +312,8 @@
     }
     else if (_progressAppearance.type == 1)
     {
-        CGColorRef colorBackAlpha = CGColorCreateCopyWithAlpha(_progressAppearance.backgroundTintColor. CGColor, 0.1f);
-        CGColorRef colorProgressAlpha = CGColorCreateCopyWithAlpha(_progressAppearance.progressTintColor. CGColor, 0.3f);
+        CGColorRef colorBackAlpha = CGColorCreateCopyWithAlpha(_progressAppearance.backgroundTintColor. CGColor, 0.05f);
+        CGColorRef colorProgressAlpha = CGColorCreateCopyWithAlpha(_progressAppearance.progressTintColor. CGColor, 0.2f);
         
         CGRect allRect = rect;
         CGRect circleRect = CGRectMake(allRect.origin.x + 2, allRect.origin.y + 2, allRect.size.width - 4, allRect.size.height - 4);
@@ -358,10 +358,10 @@
 		CGContextStrokeEllipseInRect(context, circleRect);
 		// Draw progress
 		CGPoint center = CGPointMake(allRect.size.width / 2, allRect.size.height / 2);
-		CGFloat radius = (allRect.size.width - 4) / 2 - 4;
+		CGFloat radius = (allRect.size.width - 4) / 2 - 3;
 		CGFloat startAngle = - ((float)M_PI / 2); // 90 degrees
 		CGFloat endAngle = (self.progress * 2 * (float)M_PI) + startAngle;
-		[_progressAppearance.backgroundTintColor setFill];
+		[_progressAppearance.progressTintColor setFill];
 		CGContextMoveToPoint(context, center.x, center.y);
 		CGContextAddArc(context, center.x, center.y, radius, startAngle, endAngle, 0);
 		CGContextClosePath(context);
