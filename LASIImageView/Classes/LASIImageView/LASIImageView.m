@@ -322,21 +322,20 @@ static LProgressAppearance *lProgressAppearance = nil;
     
     LProgressAppearance *appearance = self.progressAppearance;
 	
-	if (appearance.type == 0)
+	if (appearance.type == LProgressTypeAnnular)
     {
-		// Draw background
 		CGFloat lineWidth = 5.f;
 		UIBezierPath *processBackgroundPath = [UIBezierPath bezierPath];
 		processBackgroundPath.lineWidth = lineWidth;
 		processBackgroundPath.lineCapStyle = kCGLineCapRound;
 		CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
 		CGFloat radius = (self.bounds.size.width - lineWidth)/2;
-		CGFloat startAngle = - ((float)M_PI / 2); // 90 degrees
+		CGFloat startAngle = - ((float)M_PI / 2);
 		CGFloat endAngle = (2 * (float)M_PI) + startAngle;
 		[processBackgroundPath addArcWithCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
 		[appearance.backgroundTintColor set];
 		[processBackgroundPath stroke];
-		// Draw progress
+
 		UIBezierPath *processPath = [UIBezierPath bezierPath];
 		processPath.lineCapStyle = kCGLineCapRound;
 		processPath.lineWidth = lineWidth;
@@ -348,7 +347,7 @@ static LProgressAppearance *lProgressAppearance = nil;
         if (appearance.showPercentage)
             [self drawTextInContext:context];
     }
-    else if (appearance.type == 1)
+    else if (appearance.type == LProgressTypeCircle)
     {
         CGColorRef colorBackAlpha = CGColorCreateCopyWithAlpha(appearance.backgroundTintColor. CGColor, 0.05f);
         CGColorRef colorProgressAlpha = CGColorCreateCopyWithAlpha(appearance.progressTintColor. CGColor, 0.2f);
@@ -390,14 +389,13 @@ static LProgressAppearance *lProgressAppearance = nil;
 		[appearance.progressTintColor setStroke];
         CGContextSetFillColorWithColor(context, colorBackAlpha);
 
-        // Draw background
 		CGContextSetLineWidth(context, 2.0f);
 		CGContextFillEllipseInRect(context, circleRect);
 		CGContextStrokeEllipseInRect(context, circleRect);
-		// Draw progress
+
 		CGPoint center = CGPointMake(allRect.size.width / 2, allRect.size.height / 2);
 		CGFloat radius = (allRect.size.width - 4) / 2 - 3;
-		CGFloat startAngle = - ((float)M_PI / 2); // 90 degrees
+		CGFloat startAngle = - ((float)M_PI / 2);
 		CGFloat endAngle = (self.progress * 2 * (float)M_PI) + startAngle;
 		[appearance.progressTintColor setFill];
 		CGContextMoveToPoint(context, center.x, center.y);
