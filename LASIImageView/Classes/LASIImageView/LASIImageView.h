@@ -49,8 +49,11 @@
 @property (strong, nonatomic) UIFont *percentageTextFont;
 @property (strong, nonatomic) UIColor *percentageTextColor;
 @property (assign, nonatomic) CGPoint percentageTextOffset;
-@property (assign, nonatomic) BOOL annular;
-@property (assign, nonatomic) BOOL showPercentageInAnnular;
+@property (assign, nonatomic) int type;
+@property (assign, nonatomic) BOOL showPercentage;
+
+
+- (void)setColorSchemeWithColor:(UIColor *)color;
 
 
 @end

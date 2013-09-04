@@ -282,10 +282,9 @@
 - (void)drawRect:(CGRect)rect
 {
 	CGRect allRect = self.bounds;
-	CGRect circleRect = CGRectInset(allRect, 2.0f, 2.0f);
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	if (_progressAppearance.annular)
+	if (_progressAppearance.type == 0)
     {
 		// Draw background
 		CGFloat lineWidth = 5.f;
@@ -307,40 +306,84 @@
 		[processPath addArcWithCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
 		[_progressAppearance.progressTintColor set];
 		[processPath stroke];
-        
-        if (_progressAppearance.showPercentageInAnnular)
-        {
-            CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
-            
-            UIFont *font = _progressAppearance.percentageTextFont;
-            NSString *text = [NSString stringWithFormat:@"%i%%", (int)(_progress * 100.0f)];
-            
-            float x = floorf(allRect.size.width / 2) + 3 + _progressAppearance.percentageTextOffset.x;
-            float y = floorf(allRect.size.height / 2) - 6 + _progressAppearance.percentageTextOffset.y;
-            
-            CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(30000, 13)];
-            [text drawAtPoint:CGPointMake(x - textSize.width / 2.0, y) withFont:font];
-        }
+
+        if (_progressAppearance.showPercentage)
+            [self drawTextInContext:context];
     }
+    else if (_progressAppearance.type == 1)
+    {
+        CGColorRef colorBackAlpha = CGColorCreateCopyWithAlpha(_progressAppearance.backgroundTintColor. CGColor, 0.1f);
+        CGColorRef colorProgressAlpha = CGColorCreateCopyWithAlpha(_progressAppearance.progressTintColor. CGColor, 0.3f);
+        
+        CGRect allRect = rect;
+        CGRect circleRect = CGRectMake(allRect.origin.x + 2, allRect.origin.y + 2, allRect.size.width - 4, allRect.size.height - 4);
+        float x = allRect.origin.x + (allRect.size.width / 2);
+        float y = allRect.origin.y + (allRect.size.height / 2);
+        float angle = (_progress) * 360.0f;
+        
+        CGContextSaveGState(context);
+        CGContextSetStrokeColorWithColor(context, colorProgressAlpha);
+        CGContextSetFillColorWithColor(context, colorBackAlpha);
+        CGContextSetLineWidth(context, 2.0);
+        CGContextFillEllipseInRect(context, circleRect);
+        CGContextStrokeEllipseInRect(context, circleRect);
+        
+        CGContextSetRGBFillColor(context, 1.0, 0.0, 1.0, 1.0);
+        CGContextMoveToPoint(context, x, y);
+        CGContextAddArc(context, x, y, (allRect.size.width + 4) / 2, -M_PI / 2, (angle * M_PI) / 180.0f - M_PI / 2, 0);
+        CGContextClip(context);
+        
+        CGContextSetStrokeColorWithColor(context, _progressAppearance.progressTintColor.CGColor);
+        CGContextSetFillColorWithColor(context, _progressAppearance.backgroundTintColor.CGColor);
+        CGContextSetLineWidth(context, 2.0);
+        CGContextFillEllipseInRect(context, circleRect);
+        CGContextStrokeEllipseInRect(context, circleRect);
+        CGContextRestoreGState(context);
+        
+        if (_progressAppearance.showPercentage)
+            [self drawTextInContext:context];
+	}
     else
     {
-		// Draw background
+        CGRect circleRect = CGRectInset(allRect, 2.0f, 2.0f);
+
+        CGColorRef colorBackAlpha = CGColorCreateCopyWithAlpha(_progressAppearance.backgroundTintColor. CGColor, 0.1f);
+        
 		[_progressAppearance.progressTintColor setStroke];
-		[_progressAppearance.backgroundTintColor setFill];
+        CGContextSetFillColorWithColor(context, colorBackAlpha);
+
+        // Draw background
 		CGContextSetLineWidth(context, 2.0f);
 		CGContextFillEllipseInRect(context, circleRect);
 		CGContextStrokeEllipseInRect(context, circleRect);
 		// Draw progress
 		CGPoint center = CGPointMake(allRect.size.width / 2, allRect.size.height / 2);
-		CGFloat radius = (allRect.size.width - 4) / 2;
+		CGFloat radius = (allRect.size.width - 4) / 2 - 4;
 		CGFloat startAngle = - ((float)M_PI / 2); // 90 degrees
 		CGFloat endAngle = (self.progress * 2 * (float)M_PI) + startAngle;
-		CGContextSetRGBFillColor(context, 1.0f, 1.0f, 1.0f, 1.0f); // white
+		[_progressAppearance.backgroundTintColor setFill];
 		CGContextMoveToPoint(context, center.x, center.y);
 		CGContextAddArc(context, center.x, center.y, radius, startAngle, endAngle, 0);
 		CGContextClosePath(context);
 		CGContextFillPath(context);
-	}
+    }
+}
+
+
+- (void)drawTextInContext:(CGContextRef)context
+{
+    CGRect allRect = self.bounds;
+
+    UIFont *font = _progressAppearance.percentageTextFont;
+    NSString *text = [NSString stringWithFormat:@"%i%%", (int)(_progress * 100.0f)];
+    
+    CGSize textSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(30000, 13)];
+
+    float x = floorf(allRect.size.width / 2) + 3 + _progressAppearance.percentageTextOffset.x;
+    float y = floorf(allRect.size.height / 2) - 6 + _progressAppearance.percentageTextOffset.y;
+    
+    CGContextSetFillColorWithColor(context, _progressAppearance.percentageTextColor.CGColor);
+    [text drawAtPoint:CGPointMake(x - textSize.width / 2.0, y) withFont:font];
 }
 
 
@@ -393,10 +436,18 @@
         _percentageTextFont = [UIFont systemFontOfSize:10];
         _percentageTextColor = [UIColor whiteColor];
         _percentageTextOffset = CGPointZero;
-        _annular = YES;
-        _showPercentageInAnnular = YES;
+        _type = 0;
+        _showPercentage = YES;
     }
     return self;
+}
+
+
+- (void)setColorSchemeWithColor:(UIColor *)color
+{
+    _progressTintColor = [UIColor colorWithCGColor:CGColorCreateCopyWithAlpha(color.CGColor, 1)];
+    _backgroundTintColor = [UIColor colorWithCGColor:CGColorCreateCopyWithAlpha(color.CGColor, 0.1)];
+    _percentageTextColor = [UIColor colorWithCGColor:CGColorCreateCopyWithAlpha(color.CGColor, 1)];
 }
 
 
