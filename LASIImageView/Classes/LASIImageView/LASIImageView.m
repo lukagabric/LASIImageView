@@ -458,10 +458,16 @@ static LProgressAppearance *lProgressAppearance = nil;
 }
 
 
+#pragma mark -
+
+
 @end
 
 
 @implementation LProgressAppearance
+
+
+#pragma mark - init
 
 
 - (id)init
@@ -479,6 +485,9 @@ static LProgressAppearance *lProgressAppearance = nil;
 }
 
 
+#pragma mark - Setters
+
+
 - (void)setSchemeColor:(UIColor *)schemeColor
 {
     _schemeColor = schemeColor;
@@ -487,6 +496,9 @@ static LProgressAppearance *lProgressAppearance = nil;
     _backgroundTintColor = [UIColor colorWithCGColor:CGColorCreateCopyWithAlpha(schemeColor.CGColor, 0.1)];
     _percentageTextColor = [UIColor colorWithCGColor:CGColorCreateCopyWithAlpha(schemeColor.CGColor, 1)];
 }
+
+
+#pragma mark -
 
 
 @end
