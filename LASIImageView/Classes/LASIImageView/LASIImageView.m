@@ -43,7 +43,7 @@
 
 - (id)initWithImage:(UIImage *)image highlightedImage:(UIImage *)highlightedImage
 {
-    self = [super init];
+    self = [super initWithImage:image highlightedImage:highlightedImage];
     if (self)
     {
         [self initialize];
@@ -69,7 +69,7 @@
     _timeOutSeconds = 8;
     _cacheDelegate = [ASIDownloadCache sharedCache];
     _cacheStoragePolicy = ASICachePermanentlyCacheStoragePolicy;
-    _cachePolicy = ASIDoNotReadFromCacheCachePolicy;
+    _cachePolicy = ASIAskServerIfModifiedWhenStaleCachePolicy;
 }
 
 
@@ -128,16 +128,35 @@
     _request.downloadProgressDelegate = self;
     _request.delegate = self;
     
-    [self loadProgressView];
+    if ([[ASIDownloadCache sharedCache] isCachedDataCurrentForRequest:_request])
+    {
+        [self loadCachedImage];
+    }
+    else
+    {
+        [self loadProgressView];
+        [_request startAsynchronous];
+    }
+}
+
+
+- (void)loadCachedImage
+{
+    NSString *filePath = [[ASIDownloadCache sharedCache] pathToStoreCachedResponseDataForRequest:_request];
     
-    [_request startAsynchronous];
+	if (filePath != nil && [[NSFileManager defaultManager] fileExistsAtPath:filePath])
+    {
+        UIImage *cachedImage = [UIImage imageWithContentsOfFile:filePath];
+        
+        if (cachedImage)
+            super.image = cachedImage;
+    }
 }
 
 
 - (void)cancelImageDownload
 {
-    [self freeRequest];
-    [self freeProgressView];
+    [self freeAll];
 }
 
 
@@ -149,18 +168,30 @@
     UIImage *downloadedImage = [UIImage imageWithData:request.responseData];
     
     if (downloadedImage)
+    {
         self.image = downloadedImage;
+        [self freeAll];
+    }
     else
+    {
         [self requestFailed:nil];
+    }
 }
 
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-    if (_downloadFailedImage)
-        self.image = _downloadFailedImage;
-    else if (_downloadFailedImageName)
-        self.image = [UIImage imageNamed:_downloadFailedImageName];
+    if (!self.image)
+    {
+        if (_downloadFailedImage)
+            self.image = _downloadFailedImage;
+        else if (_downloadFailedImageName)
+            self.image = [UIImage imageNamed:_downloadFailedImageName];
+        else
+            [self loadCachedImage];
+    }
+    
+    [self freeAll];
 }
 
 
