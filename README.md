@@ -5,7 +5,7 @@ iOS UIImageView subclass - download image with different progress indicators
 
 Screenshots
 -----------
-[![](http://lukagabric.com/wp-content/uploads/2013/09/LASIImageView.png)](http://lukagabric.com/wp-content/uploads/2013/09/LASIImageView.png)
+[![](http://lukagabric.com/wp-content/uploads/2013/09/LASIImageViewSample.png)](http://lukagabric.com/wp-content/uploads/2013/09/LASIImageViewSample.png)
 
 How to use
 ----------
