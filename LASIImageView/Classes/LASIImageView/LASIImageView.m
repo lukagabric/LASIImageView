@@ -65,11 +65,7 @@
 
 - (void)initialize
 {
-    _secondsToCache = 900;
-    _timeOutSeconds = 8;
-    _cacheDelegate = [ASIDownloadCache sharedCache];
-    _cacheStoragePolicy = ASICachePermanentlyCacheStoragePolicy;
-    _cachePolicy = ASIAskServerIfModifiedWhenStaleCachePolicy;
+
 }
 
 
@@ -121,18 +117,19 @@
         return;
     }
     
-    _request = [ASIHTTPRequest requestWithURL:imageURL usingCache:_cacheDelegate andCachePolicy:_cachePolicy];
-    _request.cacheStoragePolicy = _cacheStoragePolicy;
-    _request.secondsToCache = _secondsToCache;
-    _request.timeOutSeconds = _timeOutSeconds;
+    _request = [ASIHTTPRequest requestWithURL:imageURL usingCache:self.requestSettings.cacheDelegate andCachePolicy:self.requestSettings.cachePolicy];
+    _request.cacheStoragePolicy = self.requestSettings.cacheStoragePolicy;
+    _request.secondsToCache = self.requestSettings.secondsToCache;
+    _request.timeOutSeconds = self.requestSettings.timeOutSeconds;
     _request.downloadProgressDelegate = self;
     _request.delegate = self;
     
-    [self loadCachedImage];
-
-    if (![[ASIDownloadCache sharedCache] isCachedDataCurrentForRequest:_request])
+    if ([[ASIDownloadCache sharedCache] isCachedDataCurrentForRequest:_request])
     {
-        [self loadPlaceholderImage];
+        [self loadCachedImage];
+    }
+    else
+    {
         [self loadProgressView];
         [_request startAsynchronous];
     }
@@ -157,10 +154,10 @@
 {
     if (!self.image)
     {
-        if (_placeholderImage)
-            self.image = _placeholderImage;
-        else if (_placeholderImageName)
-            self.image = [UIImage imageNamed:_placeholderImageName];
+        if (self.asiImageViewAppearance.placeholderImage)
+            self.image = self.asiImageViewAppearance.placeholderImage;
+        else if (self.asiImageViewAppearance.placeholderImageName)
+            self.image = [UIImage imageNamed:self.asiImageViewAppearance.placeholderImageName];
     }
 }
 
@@ -171,10 +168,10 @@
     
     if (!self.image)
     {
-        if (_downloadFailedImage)
-            self.image = _downloadFailedImage;
-        else if (_downloadFailedImageName)
-            self.image = [UIImage imageNamed:_downloadFailedImageName];
+        if (self.asiImageViewAppearance.downloadFailedImage)
+            self.image = self.asiImageViewAppearance.downloadFailedImage;
+        else if (self.asiImageViewAppearance.downloadFailedImageName)
+            self.image = [UIImage imageNamed:self.asiImageViewAppearance.downloadFailedImageName];
     }
 }
 
@@ -282,6 +279,63 @@
 }
 
 
+#pragma mark - Getters
+
+
+- (LProgressAppearance *)progressAppearance
+{
+    @synchronized(self)
+    {
+        if (_progressAppearance)
+            return _progressAppearance;
+        
+        return [LProgressAppearance sharedProgressAppearance];
+    }
+}
+
+
+- (LRequestSettings *)requestSettings
+{
+    @synchronized(self)
+    {
+        if (_requestSettings)
+            return _requestSettings;
+        
+        return [LRequestSettings sharedRequestSettings];
+    }
+}
+
+
+- (LASIImageViewAppearance *)asiImageViewAppearance
+{
+    @synchronized(self)
+    {
+        if (_asiImageViewAppearance)
+            return _asiImageViewAppearance;
+        
+        return [LASIImageViewAppearance sharedASIImageViewAppearance];
+    }
+}
+
+
++ (LProgressAppearance *)sharedProgressAppearance
+{
+    return [LProgressAppearance sharedProgressAppearance];
+}
+
+
++ (LRequestSettings *)sharedRequestSettings
+{
+    return [LRequestSettings sharedRequestSettings];
+}
+
+
++ (LASIImageViewAppearance *)sharedASIImageViewAppearance
+{
+    return [LASIImageViewAppearance sharedASIImageViewAppearance];
+}
+
+
 #pragma mark -
 
 
@@ -294,39 +348,15 @@
 @implementation LProgressView
 
 
-#pragma mark - LProgressAppearance
-
-
-static LProgressAppearance *lProgressAppearance = nil;
-
-
-+ (LProgressAppearance *)progressAppearance
-{
-    if (lProgressAppearance)
-        return lProgressAppearance;
-    
-    return lProgressAppearance = [LProgressAppearance new];
-}
-
-
-+ (void)setProgressAppearance:(LProgressAppearance *)progressAppearance
-{
-    lProgressAppearance = progressAppearance;
-}
-
-
 - (LProgressAppearance *)progressAppearance
 {
-    if (_progressAppearance)
-        return _progressAppearance;
-    
-    return [LProgressView progressAppearance];
-}
-
-
-- (void)setProgressAppearance:(LProgressAppearance *)progressAppearance
-{
-    _progressAppearance = progressAppearance;
+    @synchronized(self)
+    {
+        if (_progressAppearance)
+            return _progressAppearance;
+        
+        return [LProgressAppearance sharedProgressAppearance];
+    }
 }
 
 
@@ -514,6 +544,21 @@ static LProgressAppearance *lProgressAppearance = nil;
 @implementation LProgressAppearance
 
 
+static LProgressAppearance *sharedProgressAppearanceInstance = nil;
+
+
++ (LProgressAppearance *)sharedProgressAppearance
+{
+    @synchronized(self)
+    {
+        if (sharedProgressAppearanceInstance)
+            return sharedProgressAppearanceInstance;
+        
+        return sharedProgressAppearanceInstance = [LProgressAppearance new];
+    }
+}
+
+
 #pragma mark - init
 
 
@@ -546,6 +591,69 @@ static LProgressAppearance *lProgressAppearance = nil;
 
 
 #pragma mark -
+
+
+@end
+
+
+@implementation LRequestSettings
+
+
+#pragma mark - LRequestSettings
+
+
+static LRequestSettings *sharedRequestSettingsInstance = nil;
+
+
++ (LRequestSettings *)sharedRequestSettings
+{
+    @synchronized(self)
+    {
+        if (sharedRequestSettingsInstance)
+            return sharedRequestSettingsInstance;
+        
+        return sharedRequestSettingsInstance = [LRequestSettings new];
+    }
+}
+
+
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+        _secondsToCache = 900;
+        _timeOutSeconds = 8;
+        _cacheDelegate = [ASIDownloadCache sharedCache];
+        _cacheStoragePolicy = ASICachePermanentlyCacheStoragePolicy;
+        _cachePolicy = ASIAskServerIfModifiedWhenStaleCachePolicy;
+    }
+    return self;
+}
+
+
+@end
+
+
+@implementation LASIImageViewAppearance
+
+
+#pragma mark - LASIImageViewAppearance
+
+
+static LASIImageViewAppearance *sharedImageViewAppearanceInstance = nil;
+
+
++ (LASIImageViewAppearance *)sharedASIImageViewAppearance
+{
+    @synchronized(self)
+    {
+        if (sharedImageViewAppearanceInstance)
+            return sharedImageViewAppearanceInstance;
+        
+        return sharedImageViewAppearanceInstance = [LASIImageViewAppearance new];
+    }
+}
 
 
 @end
