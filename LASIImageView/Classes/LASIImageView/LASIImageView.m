@@ -128,12 +128,11 @@
     _request.downloadProgressDelegate = self;
     _request.delegate = self;
     
-    if ([[ASIDownloadCache sharedCache] isCachedDataCurrentForRequest:_request])
+    [self loadCachedImage];
+
+    if (![[ASIDownloadCache sharedCache] isCachedDataCurrentForRequest:_request])
     {
-        [self loadCachedImage];
-    }
-    else
-    {
+        [self loadPlaceholderImage];
         [self loadProgressView];
         [_request startAsynchronous];
     }
@@ -150,6 +149,32 @@
         
         if (cachedImage)
             super.image = cachedImage;
+    }
+}
+
+
+- (void)loadPlaceholderImage
+{
+    if (!self.image)
+    {
+        if (_placeholderImage)
+            self.image = _placeholderImage;
+        else if (_placeholderImageName)
+            self.image = [UIImage imageNamed:_placeholderImageName];
+    }
+}
+
+
+- (void)loadDownloadFailedImage
+{
+    [self loadCachedImage];
+    
+    if (!self.image)
+    {
+        if (_downloadFailedImage)
+            self.image = _downloadFailedImage;
+        else if (_downloadFailedImageName)
+            self.image = [UIImage imageNamed:_downloadFailedImageName];
     }
 }
 
@@ -181,16 +206,7 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-    if (!self.image)
-    {
-        if (_downloadFailedImage)
-            self.image = _downloadFailedImage;
-        else if (_downloadFailedImageName)
-            self.image = [UIImage imageNamed:_downloadFailedImageName];
-        else
-            [self loadCachedImage];
-    }
-    
+    [self loadDownloadFailedImage];
     [self freeAll];
 }
 
