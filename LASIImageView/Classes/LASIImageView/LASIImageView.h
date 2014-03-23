@@ -12,6 +12,13 @@ typedef enum tagLProgressType
 LProgressType;
 
 
+@class LASIImageView;
+
+
+typedef void(^LASIImageViewDownloadFinishedBlock)(LASIImageView *, ASIHTTPRequest *);
+typedef void(^LASIImageViewDownloadFailedBlock)(LASIImageView *, ASIHTTPRequest *);
+
+
 @class LProgressView, LProgressAppearance, LRequestSettings, LASIImageViewAppearance;
 
 
@@ -27,6 +34,9 @@ LProgressType;
 
 
 @property (strong, nonatomic) NSString *imageUrl;
+
+@property (copy, nonatomic) LASIImageViewDownloadFinishedBlock finishedBlock;
+@property (copy, nonatomic) LASIImageViewDownloadFailedBlock failedBlock;
 
 @property (strong, nonatomic) LProgressAppearance *progressAppearance;
 @property (strong, nonatomic) LRequestSettings *requestSettings;

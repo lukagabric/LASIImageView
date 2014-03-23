@@ -122,7 +122,17 @@
     _request.secondsToCache = self.requestSettings.secondsToCache;
     _request.timeOutSeconds = self.requestSettings.timeOutSeconds;
     _request.downloadProgressDelegate = self;
-    _request.delegate = self;
+
+    __weak typeof(self) weakSelf = self;
+    __weak ASIHTTPRequest *weakReq = _request;
+    
+    _request.completionBlock = ^{
+        [weakSelf requestFinished:weakReq];
+    };
+    
+    _request.completionBlock = ^{
+        [weakSelf requestFailed:weakReq];
+    };
     
     if ([[ASIDownloadCache sharedCache] isCachedDataCurrentForRequest:_request])
     {
@@ -193,6 +203,9 @@
     {
         self.image = downloadedImage;
         [self freeAll];
+        
+        if (_finishedBlock)
+            _finishedBlock(self, request);
     }
     else
     {
@@ -205,6 +218,9 @@
 {
     [self loadDownloadFailedImage];
     [self freeAll];
+    
+    if (_failedBlock)
+        _failedBlock(self, request);
 }
 
 
