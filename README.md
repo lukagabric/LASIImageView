@@ -24,15 +24,13 @@ Three types of progress indicators are available (as in the screenshot above):
 Appearance
 ----------
 
-For example:
+It is possible to set shared appearance. Setting appearance for particular LASIImageView instance will override global appearance.
 
     [[LASIImageView sharedProgressAppearance] setSchemeColor:[UIColor whiteColor]];
     [[LASIImageView sharedASIImageViewAppearance] setDownloadFailedImageName:@"downloadFailed.png"];
 
-Request
--------
-
-It is possible to set different request settings
+Request settings
+----------------
 
     @property (assign, nonatomic) ASICachePolicy cachePolicy;
     @property (assign, nonatomic) ASICacheStoragePolicy cacheStoragePolicy;
