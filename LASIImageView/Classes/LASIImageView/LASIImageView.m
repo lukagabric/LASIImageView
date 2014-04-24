@@ -126,13 +126,13 @@
     __weak typeof(self) weakSelf = self;
     __weak ASIHTTPRequest *weakReq = _request;
     
-    _request.completionBlock = ^{
+    [_request setCompletionBlock:^{
         [weakSelf requestFinished:weakReq];
-    };
+    }];
     
-    _request.completionBlock = ^{
+    [_request setFailedBlock:^{
         [weakSelf requestFailed:weakReq];
-    };
+    }];
     
     if ([[ASIDownloadCache sharedCache] isCachedDataCurrentForRequest:_request])
     {
